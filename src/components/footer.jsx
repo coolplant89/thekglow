@@ -1,41 +1,64 @@
-import React from 'react';
-import { Box, Container, Typography, Link, IconButton, Grid } from '@mui/material';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import React from "react";
+import { Box, Container, Typography, IconButton, Grid, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import EmailIcon from "@mui/icons-material/Email";
 
 const Footer = () => {
   return (
-    <Box 
-      component="footer" 
+    <Box
+      component="footer"
       sx={{
         py: 4,
         px: 2,
-        mt: 'auto',
+        mt: "auto",
         backgroundColor: (theme) => theme.palette.grey[200],
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={4} justifyContent="space-between" alignItems="center">
+        <Grid
+          container
+          spacing={4}
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Grid item xs={12} sm={4} textAlign="center">
-            <Typography variant="body1">
-              Follow us on social media
-            </Typography>
-            <IconButton href="https://twitter.com/plantify" target="_blank">
+            <Typography variant="body1">Follow us on social media</Typography>
+            <IconButton href="https://twitter.com/thekglowshop" target="_blank">
               <TwitterIcon />
             </IconButton>
           </Grid>
           <Grid item xs={12} sm={4} textAlign="center">
             <Typography variant="body2" color="text.secondary">
-              {'© '}
-              <Link color="inherit" href="https://yourwebsite.com/">
-                PLANTIFY
-              </Link>{' '}
+              {"© "}
+              <RouterLink
+                to="/"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                theKGlow
+              </RouterLink>{" "}
               {new Date().getFullYear()}
-              {'.'}
+              {"."}
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4} textAlign="center">
-            <Link href="#aboutus" color="inherit" sx={{ mx: 1 }}>
+            <Link
+              component={RouterLink}
+              to="/aboutus"
+              style={{ color: "inherit", margin: "0 8px" }}
+            >
               About Us
+            </Link>
+            <Link
+              href="mailto:contact@thekglow.com"
+              style={{ color: "inherit", margin: "0 8px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "mailto:contact@thekglow.com";
+              }}
+            >
+              <EmailIcon sx={{ verticalAlign: 'middle', mr: 0.5 }} />
+              contact@thekglow.com
             </Link>
           </Grid>
         </Grid>
